@@ -1,0 +1,21 @@
+//references for mixin https://htmlcss.fullstack.edu.vn/?id=4bd43f6c-4518-4a65-8fb2-76246ec921c2
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px,
+);
+// use mixin to make responsive
+@mixin breakpoint($key) {
+    $breakpoint: map-get($grid-breakpoints, $key);
+    @if ($breakpoint) {
+        //desktop-first
+        @media (max-width: ($breakpoint - 0.02)) {
+            @content;
+        }
+    } @else {
+        @error "this key #{$key} not exits";
+    }
+}
