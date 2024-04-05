@@ -20,6 +20,7 @@ a {
 a,
 img,
 button,
+img,
 input,
 label,
 textarea,
@@ -29,6 +30,7 @@ select {
     color: inherit;
     outline: none;
     border: none;
+    -webkit-tap-highlight-color: transparent;
 }
 button {
     border: none;

@@ -158,6 +158,7 @@ a {
 a,
 img,
 button,
+img,
 input,
 label,
 textarea,
@@ -167,6 +168,7 @@ select {
   color: inherit;
   outline: none;
   border: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 button {
@@ -1299,18 +1301,69 @@ html {
 .navbar {
   margin-left: 129px;
 }
-@media (max-width: 991.98px) {
-  .navbar {
-    display: none;
-  }
-}
 @media (max-width: 1199.98px) {
   .navbar {
     margin-left: 50px;
   }
 }
+@media (max-width: 991.98px) {
+  .navbar {
+    position: fixed;
+    inset: 0 50% 0 0;
+    background: #fff;
+    margin-left: 0;
+    z-index: 9;
+    padding: 20px 0;
+    translate: -100%;
+    transition: translate 0.5s;
+  }
+  .navbar.show {
+    translate: 0;
+  }
+  .navbar.show ~ .navbar__overlay {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+.navbar__overlay {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity, visibility;
+  transition-duration: 0.5s;
+}
+@media (max-width: 991.98px) {
+  .navbar__overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 8;
+    background: rgba(0, 0, 0, 0.4);
+  }
+}
+.navbar__close--btn {
+  display: none;
+}
+@media (max-width: 991.98px) {
+  .navbar__close--btn {
+    display: block;
+    padding: 10px 40px;
+  }
+}
+@media (max-width: 991.98px) {
+  .navbar__list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
 .navbar__item:hover .dropdown {
   display: block;
+}
+@media (max-width: 991.98px) {
+  .navbar__item {
+    width: 100%;
+  }
+  .navbar__item:hover .dropdown {
+    display: none;
+  }
 }
 .navbar__link {
   height: 50px;
@@ -1319,6 +1372,12 @@ html {
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 2.2rem; /* 146.667% */
+}
+@media (max-width: 991.98px) {
+  .navbar__link {
+    padding: 0 40px;
+    justify-content: space-between;
+  }
 }
 .navbar__arrow {
   margin-top: 3px;
@@ -1513,6 +1572,13 @@ html {
   inset: 0 0 0 var(--main-column-width);
   padding-left: 30px;
   overflow-y: auto;
+}
+.sub-menu--not-main {
+  display: grid;
+  position: initial;
+  grid-template-columns: repeat(5, 1fr);
+  padding-left: 0;
+  height: calc(var(--max-height-dropdown) - 60px);
 }
 
 /*# sourceMappingURL=main.css.map */
