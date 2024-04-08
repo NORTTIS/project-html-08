@@ -8,10 +8,10 @@ html {
     --top-act-group-shadow: rgba(237, 237, 246, 0.2);
     --top-act-group-separate: #ededf6;
     --body-bg: #f6f6f6;
-    @include abstracts.breakpoint(sm) {
+    @include abstracts.screen(sm) {
         --header-bg-color: #fff;
     }
-    @include abstracts.breakpoint(lg) {
+    @include abstracts.screen(lg) {
         --header-shadow-color: rgba(0, 0, 0, 0.2);
     }
 
